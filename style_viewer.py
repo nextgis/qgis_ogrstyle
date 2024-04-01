@@ -32,6 +32,7 @@ from .resources import *
 # Import the code for the dialog
 from .style_viewer_dialog import StyleViewerDialog
 import os.path
+from . import about_dialog
 
 
 class StyleViewer:
@@ -46,6 +47,7 @@ class StyleViewer:
         :type iface: QgsInterface
         """
         # Save reference to the QGIS interface
+        self.actionAbout = None
         self.renderer = None
         self.dlg = None
         self.layer = None
@@ -71,6 +73,10 @@ class StyleViewer:
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
         self.first_start = None
+
+    def about(self):
+        dialog = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))
+        dialog.exec_()
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -173,6 +179,15 @@ class StyleViewer:
 
         # will be set False in run()
         self.first_start = True
+        self.actionAbout = QAction(
+            self.tr("About plugin…"), self.iface.mainWindow()
+        )
+        self.iface.addPluginToMenu("Style Viewer", self.actionAbout)
+        self.actionAbout.triggered.connect(self.about)
+
+    def about(self):
+        dialog = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))
+        dialog.exec_()
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
@@ -181,6 +196,8 @@ class StyleViewer:
                 self.tr(u'&Style Viewer'),
                 action)
             self.iface.removeToolBarIcon(action)
+        self.iface.removePluginMenu("Style Viewer", self.actionAbout)
+        self.actionAbout.deleteLater()
 
     def closeEvent(self, event):
         # Disconnect the signal before the window is closed

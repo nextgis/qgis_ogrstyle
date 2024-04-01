@@ -6,7 +6,7 @@
 name=Style Viewer
 qgisMinimumVersion=3.0
 description=This plugin gathers embedded styles and shows them
-version=0.1
+version=0.1.0
 author=Leonid Kolesnichenko
 email=leonid.kolesnichenko@nextgis.com
 

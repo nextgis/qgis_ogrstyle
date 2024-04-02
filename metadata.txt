@@ -1,9 +1,9 @@
 [general]
-name=Copy_Coords
-description=Capture map coordinates in ONE click to paste them into a spreadsheet
-description[ru]=Получите координаты точки на карте всего одним щелчком мыши, чтобы вставить их в электронную таблицу
-about=Capture coordinates from the map in exactly one click for immediate pasting into a spreadsheet, as simple as it gets. Use SHIFT to copy coordinates in EPSG:4326 (WGS 1984) independently from what your current CRS is. Developed by NextGIS. Any feedback is welcome at https://nextgis.com/contact
-about[ru]=Получите координаты точки на карте для немедленной вставки в электронную таблицу всего за один клик, настолько просто, насколько это возможно. Используйте SHIFT, чтобы скопировать координаты в EPSG:4326 (WGS 1984) независимо от того, каков ваш текущий CRS. Разработан компанией NextGIS. Любая обратная связь приветствуется по адресу https://nextgis.com/contact
+name=Copy_OGR_Style
+description=Capture OGR Style in ONE click to paste them into a spreadsheet
+description[ru]=Получите строковое представления стиля на карте всего одним щелчком мыши, чтобы вставить их в электронную таблицу
+about=Сapture OGR Style in exactly one click for immediate pasting into a spreadsheet, as simple as it gets. Developed by NextGIS. Any feedback is welcome at https://nextgis.com/contact
+about[ru]=Получите строковое представления стиля на карте для немедленной вставки в электронную таблицу всего за один клик, настолько просто, насколько это возможно. Разработан компанией NextGIS. Любая обратная связь приветствуется по адресу https://nextgis.com/contact
 category=Vector
 version=0.3
 qgisMinimumVersion=3.0
@@ -22,11 +22,11 @@ changelog=
       0.1
         * add Shift+click to store coords in EPSG:4326
 
-tags=coords,copy coords
+tags=style, copy style
 
 homepage=https://nextgis.com
-tracker=https://github.com/nextgis/qgis_copy_coords/issues
-repository=https://github.com/nextgis/qgis_copy_coords
+tracker=https://github.com/nextgis/qgis_ogrstyle/issues
+repository=https://github.com/nextgis/qgis_ogrstyle
 video=https://youtu.be/ISH2bB6quB4
 video[ru]=https://youtu.be/74mxkqoHXIw
 

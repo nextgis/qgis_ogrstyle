@@ -54,16 +54,15 @@ class CopyCoordstool(QgsMapTool):
         self.canvas.setCursor(self.cursor)
 
     def canvasReleaseEvent(self, event):
-        QApplication.setOverrideCursor(Qt.WaitCursor)
-        found_features = self.identify_tool.identify(event.x(), event.y(), [self.layer])
         clipboard = QApplication.clipboard()
         clipboard.setText(None)
-        if found_features:
-            if self.layer:
-                ds_uri = self.layer.dataProvider().dataSourceUri()
-                ogr_layer = ogr.Open(ds_uri)
+        self.canvas.setCursor(self.cursor)
+        if self.iface.activeLayer():
+            ds_uri = self.iface.activeLayer().dataProvider().dataSourceUri()
+            if '|' in ds_uri:
+                ds_uri = ds_uri.split('|')
+                ds_path = ds_uri[0]
+                ogr_layer = ogr.Open(ds_path)
                 if ogr_layer:
                     feature = ogr_layer[0].GetNextFeature()
                     clipboard.setText(f'{feature.GetStyleString()}')
-                feature = None
-                ogr_layer = None

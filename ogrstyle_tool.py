@@ -27,6 +27,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import QApplication, QMessageBox
+from osgeo import ogr
 
 from qgis.core import *
 from qgis.gui import *
@@ -45,28 +46,24 @@ class CopyCoordstool(QgsMapTool):
 
         self.cursor = QCursor(QPixmap(":/icons/cursor.png"), 1, 1)
 
+        self.layer = self.iface.activeLayer()
+
+        self.identify_tool = QgsMapToolIdentify(self.canvas)
+
     def activate(self):
         self.canvas.setCursor(self.cursor)
 
     def canvasReleaseEvent(self, event):
-        crsSrc = self.canvas.mapSettings().destinationCrs()
-        crsWGS = QgsCoordinateReferenceSystem('EPSG:4326')
-
         QApplication.setOverrideCursor(Qt.WaitCursor)
-        x = event.pos().x()
-        y = event.pos().y()
-        point = self.canvas.getCoordinateTransform().toMapCoordinates(x, y)
-        # If Shift is pressed, convert coords to EPSG:4326
-        if event.modifiers() == Qt.ShiftModifier:
-            f = QgsGeometry.fromPointXY(QgsPointXY(point.x(), point.y()))
-            xform = QgsCoordinateTransform(crsSrc, crsWGS, QgsProject.instance())
-            f.transform(xform)
-            point = f.asPoint()
-        QApplication.restoreOverrideCursor()
-
-        xx = str(point.x())
-        yy = str(point.y())
-
-        # QMessageBox.warning(self.iface.mainWindow(), 'Coordinates of a mouse click', f'{xx}\t{yy}')
+        found_features = self.identify_tool.identify(event.x(), event.y(), [self.layer])
         clipboard = QApplication.clipboard()
-        clipboard.setText(f'{xx}\t{yy}')
+        clipboard.setText(None)
+        if found_features:
+            if self.layer:
+                ds_uri = self.layer.dataProvider().dataSourceUri()
+                ogr_layer = ogr.Open(ds_uri)
+                if ogr_layer:
+                    feature = ogr_layer[0].GetNextFeature()
+                    clipboard.setText(f'{feature.GetStyleString()}')
+                feature = None
+                ogr_layer = None

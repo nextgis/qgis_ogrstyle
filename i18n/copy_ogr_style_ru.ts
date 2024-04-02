@@ -48,17 +48,17 @@
 <context>
     <name>CopyCoords</name>
     <message>
-        <location filename="../qgis_copy_coords.py" line="59"/>
+        <location filename="../qgis_ogrstyle.py" line="59"/>
         <source>Copy coordinates</source>
         <translation>Копировать координаты</translation>
     </message>
     <message>
-        <location filename="../qgis_copy_coords.py" line="60"/>
+        <location filename="../qgis_ogrstyle.py" line="60"/>
         <source>About plugin…</source>
         <translation>О плагине…</translation>
     </message>
     <message>
-        <location filename="../qgis_copy_coords.py" line="63"/>
+        <location filename="../qgis_ogrstyle.py" line="63"/>
         <source>About Copy Coords plugin</source>
         <translation>О плагинe Copy Coords</translation>
     </message>

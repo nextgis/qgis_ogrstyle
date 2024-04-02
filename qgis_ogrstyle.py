@@ -31,14 +31,14 @@ from qgis.PyQt.QtCore import QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
-from .copy_coordstool import CopyCoordstool
+from .ogrstyle_tool import CopyCoordstool
 from . import about_dialog
 
 # initialize resources (icons) from resources.py
 from . import resources
 
 
-class CopyCoords:
+class CopyOGRStyle:
 
     def __init__(self, iface):
         """Initialize class"""
@@ -90,15 +90,15 @@ class CopyCoords:
 
         add_translator(path.join(
             self.plugin_dir, 'i18n',
-            'copy_coords_{}.qm'.format(locale)
+            'copy_ogr_style_{}.qm'.format(locale)
         ))
 
     def unload(self):
         """Actions to run when the plugin is unloaded"""
         # remove menu and icon from the menu
         self.iface.removeToolBarIcon(self.action)
-        self.iface.removePluginMenu("Copy_Coords", self.action)
-        self.iface.removePluginMenu("Copy_Coords", self.actionAbout)
+        self.iface.removePluginMenu("Copy_OGR_Style", self.action)
+        self.iface.removePluginMenu("Copy_OGR_Style", self.actionAbout)
         self.actionAbout.deleteLater()
         self.action.deleteLater()
 

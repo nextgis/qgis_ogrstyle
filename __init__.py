@@ -25,5 +25,5 @@
 # ******************************************************************************
 
 def classFactory(iface):
-    from .qgis_copy_coords import CopyCoords
-    return CopyCoords(iface)
+    from .qgis_ogrstyle import CopyOGRStyle
+    return CopyOGRStyle(iface)

@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/plugins/style_viewer" >
-        <file>icon.png</file>
+    <qresource prefix="" >
+        <file>icons/cursor.png</file>
     </qresource>
 </RCC>

@@ -1,14 +1,14 @@
 import os
 from typing import Dict, Optional
 
-from qgis.core import QgsSettings
-from qgis.PyQt import uic
 from qgis.PyQt.QtCore import QLocale
-from qgis.PyQt.QtWidgets import QDialog, QWidget
+from qgis.PyQt.QtWidgets import QWidget, QDialog
+from qgis.PyQt import uic
+from qgis.core import QgsSettings
 from qgis.utils import pluginMetadata
 
 FORM_CLASS, _ = uic.loadUiType(
-    os.path.join(os.path.dirname(__file__), "about_dialog_base.ui")  # noqa
+    os.path.join(os.path.dirname(__file__), "about_dialog_base.ui")
 )
 
 
@@ -19,14 +19,12 @@ class AboutDialog(QDialog, FORM_CLASS):
         self.__package_name = package_name
 
         replacemens = self.__replacemens()
-        self.pluginName.setText(
-            self.pluginName.text().replace(
-                "{plugin_name}", replacemens["{plugin_name}"]
-            )
+        self.pluginName.setText(self.pluginName.text().replace(
+            "{plugin_name}", replacemens["{plugin_name}"])
         )
-        self.setWindowTitle(
-            self.windowTitle().format(plugin_name=replacemens["{plugin_name}"])
-        )
+        self.setWindowTitle(self.windowTitle().format(
+            plugin_name=replacemens["{plugin_name}"]
+        ))
         html = self.textBrowser.toHtml()
         for key, value in replacemens.items():
             html = html.replace(key, value)
@@ -34,9 +32,7 @@ class AboutDialog(QDialog, FORM_CLASS):
 
     def __locale(self) -> str:
         override_locale = QgsSettings().value(
-            "locale/overrideFlag",
-            False,  # noqa
-            type=bool,
+            "locale/overrideFlag", False, type=bool
         )
         if not override_locale:
             locale_full_name = QLocale.system().name()
@@ -51,13 +47,13 @@ class AboutDialog(QDialog, FORM_CLASS):
 
         def metadata_value(key: str) -> str:
             value = pluginMetadata(self.__package_name, f"{key}[{locale}]")
-            if value == "__error__":
+            if value == '__error__':
                 value = pluginMetadata(self.__package_name, key)
             return value
 
         about = metadata_value("about")
         about_stop_phrase = "Разработан компанией" if is_ru else "Developed by"
-        about = about[: about.find(about_stop_phrase)]
+        about = about[:about.find(about_stop_phrase)]
 
         return {
             "{plugin_name}": metadata_value("name"),

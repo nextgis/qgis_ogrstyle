@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 /***************************************************************************
  StyleViewer
@@ -21,21 +20,25 @@
  *                                                                         *
  ***************************************************************************/
 """
-from osgeo import gdal, ogr
-from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
+
+import os.path
+
+from osgeo import ogr
+from qgis.core import QgsMapLayerType
+from qgis.PyQt.QtCore import QCoreApplication, QSettings, QTranslator
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
-from qgis.core import QgsMapLayerType
 
-# Initialize Qt resources from file resources.py
-from .resources import *
-# Import the code for the dialog
-from .style_viewer_dialog import StyleViewerDialog
-import os.path
 from . import about_dialog
 
+# Import the code for the dialog
+from .qgis_ogrstyle_dialog import QgisOgrStyleDialog
 
-class StyleViewer:
+# Initialize Qt resources from file resources.py
+from .resources import *  # noqa
+
+
+class QgisOgrStyle:
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
@@ -53,29 +56,28 @@ class StyleViewer:
         self.layer = None
         self.iface = iface
         # initialize plugin directory
-        self.plugin_dir = os.path.dirname(__file__)
+        self.plugin_dir = os.path.dirname(__file__)  # noqa
         # initialize locale
-        locale = QSettings().value('locale/userLocale')[0:2]
-        locale_path = os.path.join(
-            self.plugin_dir,
-            'i18n',
-            'StyleViewer_{}.qm'.format(locale))
+        locale = QSettings().value("locale/userLocale")[0:2]
+        locale_path = os.path.join(  # noqa
+            self.plugin_dir, "i18n", f"StyleViewer_{locale}.qm"
+        )
 
-        if os.path.exists(locale_path):
+        if os.path.exists(locale_path):  # noqa
             self.translator = QTranslator()
             self.translator.load(locale_path)
             QCoreApplication.installTranslator(self.translator)
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&Style Viewer')
+        self.menu = self.tr("&Style Viewer")
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
         self.first_start = None
 
     def about(self):
-        dialog = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))
+        dialog = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))  # noqa
         dialog.exec_()
 
     # noinspection PyMethodMayBeStatic
@@ -91,19 +93,20 @@ class StyleViewer:
         :rtype: QString
         """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('StyleViewer', message)
+        return QCoreApplication.translate("StyleViewer", message)
 
-    def add_action(
-            self,
-            icon_path,
-            text,
-            callback,
-            enabled_flag=True,
-            add_to_menu=True,
-            add_to_toolbar=True,
-            status_tip=None,
-            whats_this=None,
-            parent=None):
+    def add_action(  # noqa
+        self,
+        icon_path,
+        text,
+        callback,
+        enabled_flag=True,  # noqa
+        add_to_menu=True,  # noqa
+        add_to_toolbar=True,  # noqa
+        status_tip=None,
+        whats_this=None,
+        parent=None,
+    ):
         """Add a toolbar icon to the toolbar.
 
         :param icon_path: Path to the icon for this action. Can be a resource
@@ -159,23 +162,22 @@ class StyleViewer:
             self.iface.addToolBarIcon(action)
 
         if add_to_menu:
-            self.iface.addPluginToVectorMenu(
-                self.menu,
-                action)
+            self.iface.addPluginToVectorMenu(self.menu, action)
 
         self.actions.append(action)
 
         return action
 
-    def initGui(self):
+    def initGui(self):  # noqa
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/style_viewer/icon.png'
+        icon_path = ":/plugins/style_viewer/icon.png"
         self.add_action(
             icon_path,
-            text=self.tr(u'Style Viewer'),
+            text=self.tr("Style Viewer"),
             callback=self.run,
-            parent=self.iface.mainWindow())
+            parent=self.iface.mainWindow(),
+        )
 
         # will be set False in run()
         self.first_start = True
@@ -185,21 +187,19 @@ class StyleViewer:
         self.iface.addPluginToMenu("Style Viewer", self.actionAbout)
         self.actionAbout.triggered.connect(self.about)
 
-    def about(self):
-        dialog = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))
+    def about(self):  # noqa
+        dialog = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))  # noqa
         dialog.exec_()
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
-            self.iface.removePluginVectorMenu(
-                self.tr(u'&Style Viewer'),
-                action)
+            self.iface.removePluginVectorMenu(self.tr("&Style Viewer"), action)
             self.iface.removeToolBarIcon(action)
         self.iface.removePluginMenu("Style Viewer", self.actionAbout)
         self.actionAbout.deleteLater()
 
-    def closeEvent(self, event):
+    def closeEvent(self, event):  # noqa
         # Disconnect the signal before the window is closed
         if self.layer:
             self.layer.selectionChanged.disconnect(self.selection_changed)
@@ -215,9 +215,11 @@ class StyleViewer:
     def run(self):
         """Run method that performs all the real work"""
 
-        # Create the dialog with elements (after translation) and keep reference
-        # Only create GUI ONCE in callback, so that it will only load when the plugin is started
-        self.dlg = StyleViewerDialog()
+        # Create the dialog with elements (after translation)
+        # and keep reference
+        # Only create GUI ONCE in callback,
+        # so that it will only load when the plugin is started
+        self.dlg = QgisOgrStyleDialog()
 
         # show the dialog
         self.dlg.show()
@@ -228,6 +230,7 @@ class StyleViewer:
         # Get the active layer (make sure it's a vector layer)
         self.layer = self.iface.activeLayer()
         if self.layer and self.layer.type() == QgsMapLayerType.VectorLayer:
-            # Connect the 'selectionChanged' signal to the 'selection_changed' function
+            # Connect the 'selectionChanged'
+            # signal to the 'selection_changed' function
             self.layer.selectionChanged.connect(self.selection_changed)
             self.renderer = self.iface.activeLayer().renderer()

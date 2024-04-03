@@ -6,7 +6,9 @@ QGIS plugins page: https://plugins.qgis.org/plugins/ogrstyle/
 
 ## Capture and show OGRStyle in one click
 
-![copycoords](https://github.com/nextgis/qgis_copy_coords/assets/101568545/36d816e1-0eca-4c07-843e-929c82cac789)
+![copycoords](./assets/screenshot.png)
+
+![image-20240403100351415](./assets/results.png)
 
 ## YouTube
 

@@ -76,6 +76,8 @@ class OGRStyleTool(QgsMapTool):
                     feature = ogr_layer[0].GetFeature(clicked_feature_id)
                     clipboard.setText(f'{feature.GetStyleString()}')
                     self.dlg.StyleLineEdit.setText(clipboard.text())
+            else:
+                self.dlg.StyleLineEdit.setText("")
         self.dlg.StyleLineEdit.setCursorPosition(0)
         self.dlg.show()
 

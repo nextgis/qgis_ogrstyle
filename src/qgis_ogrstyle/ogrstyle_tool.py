@@ -67,15 +67,15 @@ class OGRStyleTool(QgsMapTool):
             clicked_feature = self.identify_tool.identify(x, y)
             if clicked_feature:
                 clicked_feature_id = clicked_feature[0].mFeature.id()
-                ds_uri = self.iface.activeLayer().dataProvider().dataSourceUri()
-                if '|' in ds_uri:
-                    ds_uri = ds_uri.split('|')
-                    ds_path = ds_uri[0]
-                    ogr_layer = ogr.Open(ds_path)
-                    if ogr_layer:
-                        feature = ogr_layer[0].GetFeature(clicked_feature_id)
-                        clipboard.setText(f'{feature.GetStyleString()}')
-                        self.dlg.StyleLineEdit.setText(clipboard.text())
+                ds_path = self.iface.activeLayer().dataProvider().dataSourceUri()
+                if '|' in ds_path:
+                    ds_path = ds_path.split('|')
+                    ds_path = ds_path[0]
+                ogr_layer = ogr.Open(ds_path)
+                if ogr_layer:
+                    feature = ogr_layer[0].GetFeature(clicked_feature_id)
+                    clipboard.setText(f'{feature.GetStyleString()}')
+                    self.dlg.StyleLineEdit.setText(clipboard.text())
         self.dlg.StyleLineEdit.setCursorPosition(0)
         self.dlg.show()
 

@@ -113,6 +113,7 @@ class CopyOGRStyle:
 
     def clipboard_changed(self):
         self.dlg.StyleLineEdit.setText(self.clipboard.text())
+        self.dlg.show()
 
     def run(self):
         """Action to run"""
@@ -120,8 +121,6 @@ class CopyOGRStyle:
 
         self.iface.mapCanvas().setMapTool(self.mapTool)
         self.dlg = QgisOgrStyleDialog()
-
-        self.dlg.show()
 
         self.clipboard = QApplication.clipboard()
         self.clipboard.dataChanged.connect(self.clipboard_changed)

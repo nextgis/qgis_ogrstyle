@@ -57,18 +57,18 @@ class CopyOGRStyle:
 
         # create action that will be run by the plugin
         self.action = QAction(
-            self.tr("Copy_OGR_Style"), self.iface.mainWindow()
+            self.tr("OGRStyle"), self.iface.mainWindow()
         )
         self.action.setIcon(QIcon(":/icons/cursor.png"))
-        self.action.setWhatsThis(self.tr("Copy_OGR_Style"))
+        self.action.setWhatsThis(self.tr("OGRStyle"))
         self.actionAbout = QAction(
             self.tr("About plugin…"), self.iface.mainWindow()
         )
         self.actionAbout.setWhatsThis(self.tr("About NextGIS_OGR_Style plugin"))
 
         # add plugin menu to Vector toolbar
-        self.iface.addPluginToMenu("NextGIS_OGR_Style", self.action)
-        self.iface.addPluginToMenu("NextGIS_OGR_Style", self.actionAbout)
+        self.iface.addPluginToMenu("OGRStyle", self.action)
+        self.iface.addPluginToMenu("OGRStyle", self.actionAbout)
 
         # add icon to new menu item in Vector toolbar
         self.iface.addToolBarIcon(self.action)
@@ -101,8 +101,8 @@ class CopyOGRStyle:
         """Actions to run when the plugin is unloaded"""
         # remove menu and icon from the menu
         self.iface.removeToolBarIcon(self.action)
-        self.iface.removePluginMenu("NextGIS_OGR_Style", self.action)
-        self.iface.removePluginMenu("NextGIS_OGR_Style", self.actionAbout)
+        self.iface.removePluginMenu("OGRStyle", self.action)
+        self.iface.removePluginMenu("OGRStyle", self.actionAbout)
         self.actionAbout.deleteLater()
         self.action.deleteLater()
 
@@ -114,6 +114,7 @@ class CopyOGRStyle:
     def clipboard_changed(self):
         self.dlg.StyleLineEdit.setText(self.clipboard.text())
         self.dlg.show()
+        self.dlg.StyleLineEdit.setCursorPosition(0)
 
     def run(self):
         """Action to run"""

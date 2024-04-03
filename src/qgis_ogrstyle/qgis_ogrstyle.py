@@ -53,18 +53,18 @@ class CopyOGRStyle:
 
         # create action that will be run by the plugin
         self.action = QAction(
-            self.tr("Copy coordinates"), self.iface.mainWindow()
+            self.tr("Copy OGR Style"), self.iface.mainWindow()
         )
         self.action.setIcon(QIcon(":/icons/cursor.png"))
-        self.action.setWhatsThis(self.tr("Copy coordinates"))
+        self.action.setWhatsThis(self.tr("Copy OGR Style"))
         self.actionAbout = QAction(
             self.tr("About plugin…"), self.iface.mainWindow()
         )
-        self.actionAbout.setWhatsThis(self.tr("About Copy Coords plugin"))
+        self.actionAbout.setWhatsThis(self.tr("About NextGIS_OGR_Style plugin"))
 
         # add plugin menu to Vector toolbar
-        self.iface.addPluginToMenu("NextGIS OGR Style", self.action)
-        self.iface.addPluginToMenu("NextGIS OGR Style", self.actionAbout)
+        self.iface.addPluginToMenu("NextGIS_OGR_Style", self.action)
+        self.iface.addPluginToMenu("NextGIS_OGR_Style", self.actionAbout)
 
         # add icon to new menu item in Vector toolbar
         self.iface.addToolBarIcon(self.action)
@@ -97,8 +97,8 @@ class CopyOGRStyle:
         """Actions to run when the plugin is unloaded"""
         # remove menu and icon from the menu
         self.iface.removeToolBarIcon(self.action)
-        self.iface.removePluginMenu("NextGIS OGR Style", self.action)
-        self.iface.removePluginMenu("NextGIS OGR Style", self.actionAbout)
+        self.iface.removePluginMenu("NextGIS_OGR_Style", self.action)
+        self.iface.removePluginMenu("NextGIS_OGR_Style", self.actionAbout)
         self.actionAbout.deleteLater()
         self.action.deleteLater()
 

@@ -26,6 +26,7 @@
 import os
 from os import path
 
+from PyQt5.QtWidgets import QApplication
 from qgis.core import QgsApplication
 from qgis.PyQt.QtCore import QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
@@ -36,6 +37,7 @@ from . import about_dialog
 
 # initialize resources (icons) from resources.py
 from . import resources
+from .qgis_ogrstyle_dialog import QgisOgrStyleDialog
 
 
 class CopyOGRStyle:
@@ -43,6 +45,8 @@ class CopyOGRStyle:
     def __init__(self, iface):
         """Initialize class"""
         # save reference to QGIS interface
+        self.clipboard = None
+        self.dlg = None
         self.iface = iface
         self.plugin_dir = path.dirname(__file__)
         self._translator = None
@@ -53,10 +57,10 @@ class CopyOGRStyle:
 
         # create action that will be run by the plugin
         self.action = QAction(
-            self.tr("Copy OGR Style"), self.iface.mainWindow()
+            self.tr("Copy_OGR_Style"), self.iface.mainWindow()
         )
         self.action.setIcon(QIcon(":/icons/cursor.png"))
-        self.action.setWhatsThis(self.tr("Copy OGR Style"))
+        self.action.setWhatsThis(self.tr("Copy_OGR_Style"))
         self.actionAbout = QAction(
             self.tr("About plugin…"), self.iface.mainWindow()
         )
@@ -107,11 +111,20 @@ class CopyOGRStyle:
 
         del self.mapTool
 
+    def clipboard_changed(self):
+        self.dlg.StyleLineEdit.setText(self.clipboard.text())
+
     def run(self):
         """Action to run"""
         # create a string and show it
 
         self.iface.mapCanvas().setMapTool(self.mapTool)
+        self.dlg = QgisOgrStyleDialog()
+
+        self.dlg.show()
+
+        self.clipboard = QApplication.clipboard()
+        self.clipboard.dataChanged.connect(self.clipboard_changed)
 
     def about(self):
         dialog = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))

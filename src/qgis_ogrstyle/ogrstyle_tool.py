@@ -36,7 +36,7 @@ from qgis.gui import *
 from . import resources
 
 
-class CopyCoordstool(QgsMapTool):
+class OGRStyleTool(QgsMapTool):
     def __init__(self, iface):
         QgsMapTool.__init__(self, iface.mapCanvas())
 

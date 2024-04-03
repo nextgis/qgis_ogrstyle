@@ -58,11 +58,16 @@ class OGRStyleTool(QgsMapTool):
         clipboard.setText(None)
         self.canvas.setCursor(self.cursor)
         if self.iface.activeLayer():
-            ds_uri = self.iface.activeLayer().dataProvider().dataSourceUri()
-            if '|' in ds_uri:
-                ds_uri = ds_uri.split('|')
-                ds_path = ds_uri[0]
-                ogr_layer = ogr.Open(ds_path)
-                if ogr_layer:
-                    feature = ogr_layer[0].GetNextFeature()
-                    clipboard.setText(f'{feature.GetStyleString()}')
+            x = event.pos().x()
+            y = event.pos().y()
+            clicked_feature = self.identify_tool.identify(x, y)
+            if clicked_feature:
+                clicked_feature_id = clicked_feature[0].mFeature.id()
+                ds_uri = self.iface.activeLayer().dataProvider().dataSourceUri()
+                if '|' in ds_uri:
+                    ds_uri = ds_uri.split('|')
+                    ds_path = ds_uri[0]
+                    ogr_layer = ogr.Open(ds_path)
+                    if ogr_layer:
+                        feature = ogr_layer[0].GetFeature(clicked_feature_id)
+                        clipboard.setText(f'{feature.GetStyleString()}')

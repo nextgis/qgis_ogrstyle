@@ -46,7 +46,6 @@ class CopyOGRStyle:
         """Initialize class"""
         # save reference to QGIS interface
         self.clipboard = None
-        self.dlg = None
         self.iface = iface
         self.plugin_dir = path.dirname(__file__)
         self._translator = None
@@ -111,20 +110,11 @@ class CopyOGRStyle:
 
         del self.mapTool
 
-    def clipboard_changed(self):
-        self.dlg.StyleLineEdit.setText(self.clipboard.text())
-        self.dlg.show()
-        self.dlg.StyleLineEdit.setCursorPosition(0)
-
     def run(self):
         """Action to run"""
         # create a string and show it
 
         self.iface.mapCanvas().setMapTool(self.mapTool)
-        self.dlg = QgisOgrStyleDialog()
-
-        self.clipboard = QApplication.clipboard()
-        self.clipboard.dataChanged.connect(self.clipboard_changed)
 
     def about(self):
         dialog = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))

@@ -34,6 +34,7 @@ from qgis.gui import *
 
 # initialize resources (icons) from resources.py
 from . import resources
+from .qgis_ogrstyle_dialog import QgisOgrStyleDialog
 
 
 class OGRStyleTool(QgsMapTool):
@@ -49,6 +50,8 @@ class OGRStyleTool(QgsMapTool):
         self.layer = self.iface.activeLayer()
 
         self.identify_tool = QgsMapToolIdentify(self.canvas)
+
+        self.dlg = QgisOgrStyleDialog()
 
     def activate(self):
         self.canvas.setCursor(self.cursor)
@@ -71,3 +74,6 @@ class OGRStyleTool(QgsMapTool):
                     if ogr_layer:
                         feature = ogr_layer[0].GetFeature(clicked_feature_id)
                         clipboard.setText(f'{feature.GetStyleString()}')
+                        self.dlg.StyleLineEdit.setText(clipboard.text())
+                        self.dlg.StyleLineEdit.setCursorPosition(0)
+                        self.dlg.show()

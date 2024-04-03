@@ -59,6 +59,7 @@ class OGRStyleTool(QgsMapTool):
     def canvasReleaseEvent(self, event):
         clipboard = QApplication.clipboard()
         clipboard.setText(None)
+        self.dlg.StyleLineEdit.setText("")
         self.canvas.setCursor(self.cursor)
         if self.iface.activeLayer():
             x = event.pos().x()
@@ -75,5 +76,6 @@ class OGRStyleTool(QgsMapTool):
                         feature = ogr_layer[0].GetFeature(clicked_feature_id)
                         clipboard.setText(f'{feature.GetStyleString()}')
                         self.dlg.StyleLineEdit.setText(clipboard.text())
-                        self.dlg.StyleLineEdit.setCursorPosition(0)
                         self.dlg.show()
+        self.dlg.StyleLineEdit.setCursorPosition(0)
+

@@ -56,7 +56,7 @@ class CopyOGRStyle:
 
         # create action that will be run by the plugin
         self.action = QAction(
-            self.tr("OGRStyle"), self.iface.mainWindow()
+            self.tr("NextGIS OGRStyle"), self.iface.mainWindow()
         )
         self.action.setIcon(QIcon(":/icons/cursor.png"))
         self.action.setWhatsThis(self.tr("NextGIS OGRStyle"))

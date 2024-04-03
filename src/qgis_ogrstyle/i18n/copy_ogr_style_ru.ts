@@ -46,11 +46,11 @@
     </message>
 </context>
 <context>
-    <name>CopyCoords</name>
+    <name>NextGIS OGRStyle</name>
     <message>
         <location filename="../qgis_ogrstyle.py" line="59"/>
         <source>Copy coordinates</source>
-        <translation>Копировать координаты</translation>
+        <translation>Копировать стиль</translation>
     </message>
     <message>
         <location filename="../qgis_ogrstyle.py" line="60"/>
@@ -59,8 +59,8 @@
     </message>
     <message>
         <location filename="../qgis_ogrstyle.py" line="63"/>
-        <source>About Copy Coords plugin</source>
-        <translation>О плагинe Copy Coords</translation>
+        <source>About NextGIS OGRStyle plugin</source>
+        <translation>О плагинe NextGIS OGRStyle</translation>
     </message>
 </context>
 </TS>

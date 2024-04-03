@@ -31,7 +31,7 @@ from qgis.PyQt.QtCore import QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
-from .ogrstyle_tool import CopyCoordstool
+from .ogrstyle_tool import OGRStyleTool
 from . import about_dialog
 
 # initialize resources (icons) from resources.py
@@ -63,8 +63,8 @@ class CopyOGRStyle:
         self.actionAbout.setWhatsThis(self.tr("About Copy Coords plugin"))
 
         # add plugin menu to Vector toolbar
-        self.iface.addPluginToMenu("Copy_Coords", self.action)
-        self.iface.addPluginToMenu("Copy_Coords", self.actionAbout)
+        self.iface.addPluginToMenu("NextGIS OGR Style", self.action)
+        self.iface.addPluginToMenu("NextGIS OGR Style", self.actionAbout)
 
         # add icon to new menu item in Vector toolbar
         self.iface.addToolBarIcon(self.action)
@@ -74,7 +74,7 @@ class CopyOGRStyle:
         self.actionAbout.triggered.connect(self.about)
 
         # prepare map tool
-        self.mapTool = CopyCoordstool(self.iface)
+        self.mapTool = OGRStyleTool(self.iface)
 
     def __init_translator(self):
         # initialize locale
@@ -97,8 +97,8 @@ class CopyOGRStyle:
         """Actions to run when the plugin is unloaded"""
         # remove menu and icon from the menu
         self.iface.removeToolBarIcon(self.action)
-        self.iface.removePluginMenu("Copy_OGR_Style", self.action)
-        self.iface.removePluginMenu("Copy_OGR_Style", self.actionAbout)
+        self.iface.removePluginMenu("NextGIS OGR Style", self.action)
+        self.iface.removePluginMenu("NextGIS OGR Style", self.actionAbout)
         self.actionAbout.deleteLater()
         self.action.deleteLater()
 

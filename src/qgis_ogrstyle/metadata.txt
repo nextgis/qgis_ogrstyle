@@ -1,5 +1,5 @@
 [general]
-name=NextGIS Ogrstyle
+name=NextGIS_Ogrstyle
 description=Capture OGR Style in ONE click to paste them into a spreadsheet
 description[ru]=Получите строковое представления стиля на карте всего одним щелчком мыши, чтобы вставить их в электронную таблицу
 about=Сapture OGR Style in exactly one click for immediate pasting into a spreadsheet, as simple as it gets. Developed by NextGIS. Any feedback is welcome at https://nextgis.com/contact

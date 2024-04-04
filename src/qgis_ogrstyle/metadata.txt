@@ -5,7 +5,7 @@ description[ru]=Получите строковое представления �
 about=Сapture OGR Style in exactly one click for immediate pasting into a spreadsheet, as simple as it gets. Developed by NextGIS. Any feedback is welcome at https://nextgis.com/contact
 about[ru]=Получите строковое представления стиля на карте для немедленной вставки в электронную таблицу всего за один клик, настолько просто, насколько это возможно. Разработан компанией NextGIS. Любая обратная связь приветствуется по адресу https://nextgis.com/contact
 category=Vector
-version=0.2.1
+version=0.2.2
 qgisMinimumVersion=3.0
 qgisMaximumVersion=3.99
 

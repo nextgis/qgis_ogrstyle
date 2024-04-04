@@ -10,10 +10,6 @@ QGIS plugins page: https://plugins.qgis.org/plugins/ogrstyle/
 
 ![image-20240403100351415](src/qgis_ogrstyle/assets/results.png)
 
-## YouTube
-
-[![ISH2bB6quB4](https://github.com/nextgis/qgis_copy_coords/assets/101568545/2c899cfa-347c-4caa-844b-7ad81d2d3742)](https://youtu.be/ISH2bB6quB4)
-
 ## License
 
 This program is licensed under GNU GPL v.2 or any later version.

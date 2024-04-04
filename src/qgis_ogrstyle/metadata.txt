@@ -20,8 +20,6 @@ tags=style, copy style
 homepage=https://nextgis.com
 tracker=https://github.com/nextgis/qgis_ogrstyle/issues
 repository=https://github.com/nextgis/qgis_ogrstyle
-video=https://youtu.be/ISH2bB6quB4
-video[ru]=https://youtu.be/74mxkqoHXIw
 
 experimental=False
 deprecated=False

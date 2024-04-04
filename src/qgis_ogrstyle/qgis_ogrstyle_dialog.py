@@ -7,8 +7,8 @@
                              -------------------
         begin                : 2024-03-29
         git sha              : $Format:%H$
-        copyright            : (C) 2024 by Leonid Kolesnichenko
-        email                : leonid.kolesnichenko@nextgis.com
+        copyright            : (C) 2024 by NextGIS
+        email                : info@nextgis.com
  ***************************************************************************/
 
 /***************************************************************************

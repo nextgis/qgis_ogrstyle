@@ -5,7 +5,7 @@
 # ---------------------------------------------------------
 # This plugin takes coordinates of a mouse click and copies them to the table
 #
-# Copyright (C) NextGIS (info@nextgis.org)
+# Copyright (C) 2024 NextGIS (info@nextgis.com)
 #
 # This source is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free

@@ -6,17 +6,17 @@
     <message>
         <location filename="../about_dialog.py" line="73"/>
         <source>Developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Разработчики</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="74"/>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Домашняя страница</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="75"/>
         <source>Please report bugs at</source>
-        <translation type="unfinished"></translation>
+        <translation>Сообщайте о багах здесь</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="76"/>
@@ -26,22 +26,22 @@
     <message>
         <location filename="../about_dialog.py" line="77"/>
         <source>Video with an overview of the plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Видео с обзором на плагин</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="78"/>
         <source>Other helpful services by NextGIS</source>
-        <translation type="unfinished"></translation>
+        <translation>Другие полезные сервисы от NextGIS</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="79"/>
         <source>Convenient up-to-date data extracts for any place in the world</source>
-        <translation type="unfinished"></translation>
+        <translation>Удобные актуальные извлечения из данных по всему миру</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="82"/>
         <source>Fully featured Web GIS service</source>
-        <translation type="unfinished"></translation>
+        <translation>Полноценный Web-ГИС сервис</translation>
     </message>
 </context>
 <context>
@@ -67,12 +67,12 @@
     <message>
         <location filename="../qgis_ogrstyle.py" line="63"/>
         <source>About plugin…</source>
-        <translation type="unfinished">О плагине…</translation>
+        <translation>О плагине…</translation>
     </message>
     <message>
         <location filename="../qgis_ogrstyle.py" line="66"/>
         <source>About NextGIS OGRStyle plugin</source>
-        <translation type="unfinished">О плагинe NextGIS OGRStyle</translation>
+        <translation>О плагинe NextGIS OGRStyle</translation>
     </message>
 </context>
 <context>
@@ -80,7 +80,7 @@
     <message>
         <location filename="../qgis_ogrstyle_dialog_base.ui" line="14"/>
         <source>Style Viewer</source>
-        <translation type="unfinished"></translation>
+        <translation>Просмотр стилей</translation>
     </message>
 </context>
 </TS>

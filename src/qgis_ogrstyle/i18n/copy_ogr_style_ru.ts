@@ -2,6 +2,49 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU" sourcelanguage="en_US">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../about_dialog.py" line="73"/>
+        <source>Developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="74"/>
+        <source>Homepage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="75"/>
+        <source>Please report bugs at</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="76"/>
+        <source>bugracker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="77"/>
+        <source>Video with an overview of the plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="78"/>
+        <source>Other helpful services by NextGIS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="79"/>
+        <source>Convenient up-to-date data extracts for any place in the world</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="82"/>
+        <source>Fully featured Web GIS service</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AboutDialogBase</name>
     <message>
         <location filename="../about_dialog_base.ui" line="14"/>
@@ -13,50 +56,31 @@
         <source>&lt;p align=&quot;center&quot;&gt;{plugin_name}&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;{plugin_name}&lt;/p&gt;</translation>
     </message>
-    <message>
-        <location filename="../about_dialog_base.ui" line="40"/>
-        <source>&lt;p&gt;{description}&lt;/p&gt;
-&lt;p&gt;{about}&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Developers:&lt;/b&gt; &lt;a href=&quot;{main_url}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Homepage:&lt;/b&gt; &lt;a href=&quot;{homepage_url}&quot;&gt;{homepage_url}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Please report bugs at&lt;/b&gt; &lt;a href=&quot;{tracker_url}&quot;&gt;bugtracker&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Other helpful services by NextGIS:
-&lt;ul&gt;&lt;li&gt;&lt;b&gt;Convenient up-to-date data extracts for any place in the world:
-&lt;a href=&quot;{main_url}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Fully featured Web GIS service:
-&lt;a href=&quot;{main_url}/nextgis-com/plans&quot;&gt;
-{main_url}/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
-&lt;/p&gt;</source>
-        <translation>&lt;p&gt;{description}&lt;/p&gt;
-&lt;p&gt;{about}&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Разработчики:&lt;/b&gt; &lt;a href=&quot;{main_url}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Домашняя страница:&lt;/b&gt; &lt;a href=&quot;{homepage_url}&quot;&gt;{homepage_url}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Пожалуйста, сообщайте о багах в&lt;/b&gt; &lt;a href=&quot;{tracker_url}&quot;&gt;багтрекер&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Другие полезные сервисы NextGIS:
-&lt;ul&gt;&lt;li&gt;&lt;b&gt;Удобная выборка актуальных данных из любой точки мира:
-&lt;a href=&quot;{main_url}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Полнофункциональный веб-ГИС-сервис:
-&lt;a href=&quot;{main_url}/nextgis-com/plans&quot;&gt;
-{main_url}/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
-&lt;/p&gt;</translation>
-    </message>
 </context>
 <context>
-    <name>NextGIS OGRStyle</name>
+    <name>CopyOGRStyle</name>
     <message>
-        <location filename="../qgis_ogrstyle.py" line="59"/>
-        <source>Copy OGR Style</source>
-        <translation>Копировать стиль</translation>
-    </message>
-    <message>
-        <location filename="../qgis_ogrstyle.py" line="60"/>
-        <source>About plugin…</source>
-        <translation>О плагине…</translation>
+        <location filename="../qgis_ogrstyle.py" line="62"/>
+        <source>NextGIS OGRStyle</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qgis_ogrstyle.py" line="63"/>
+        <source>About plugin…</source>
+        <translation type="unfinished">О плагине…</translation>
+    </message>
+    <message>
+        <location filename="../qgis_ogrstyle.py" line="66"/>
         <source>About NextGIS OGRStyle plugin</source>
-        <translation>О плагинe NextGIS OGRStyle</translation>
+        <translation type="unfinished">О плагинe NextGIS OGRStyle</translation>
+    </message>
+</context>
+<context>
+    <name>StyleViewerDialogBase</name>
+    <message>
+        <location filename="../qgis_ogrstyle_dialog_base.ui" line="14"/>
+        <source>Style Viewer</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -62,7 +62,7 @@
     <message>
         <location filename="../qgis_ogrstyle.py" line="62"/>
         <source>NextGIS OGRStyle</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qgis_ogrstyle.py" line="63"/>

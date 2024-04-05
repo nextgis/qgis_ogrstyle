@@ -16,12 +16,12 @@
     <message>
         <location filename="../about_dialog.py" line="75"/>
         <source>Please report bugs at</source>
-        <translation>Сообщайте о багах здесь</translation>
+        <translation>Пожалуйста, сообщайте о багах в</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="76"/>
-        <source>bugracker</source>
-        <translation type="unfinished"></translation>
+        <source>bugtracker</source>
+        <translation>багтрекер</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="77"/>
@@ -36,12 +36,12 @@
     <message>
         <location filename="../about_dialog.py" line="79"/>
         <source>Convenient up-to-date data extracts for any place in the world</source>
-        <translation>Удобные актуальные извлечения из данных по всему миру</translation>
+        <translation>Удобная выборка актуальных данных из любой точки мира</translation>
     </message>
     <message>
         <location filename="../about_dialog.py" line="82"/>
         <source>Fully featured Web GIS service</source>
-        <translation>Полноценный Web-ГИС сервис</translation>
+        <translation>Полнофункциональный веб-ГИС-сервис</translation>
     </message>
 </context>
 <context>

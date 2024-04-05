@@ -45,7 +45,7 @@
     <name>NextGIS OGRStyle</name>
     <message>
         <location filename="../qgis_ogrstyle.py" line="59"/>
-        <source>Copy coordinates</source>
+        <source>Copy OGR Style</source>
         <translation>Копировать стиль</translation>
     </message>
     <message>

@@ -31,7 +31,10 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
 # initialize resources (icons) from resources.py
-from . import about_dialog
+from . import (
+    about_dialog,
+    resources,  # noqa: F401
+)
 from .ogrstyle_tool import OGRStyleTool
 
 

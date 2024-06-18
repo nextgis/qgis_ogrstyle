@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ******************************************************************************
 #
 # Copy_Coords
@@ -24,16 +23,14 @@
 #
 # ******************************************************************************
 
+from osgeo import ogr
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-from PyQt5.QtWidgets import QApplication, QMessageBox
-from osgeo import ogr
-
+from PyQt5.QtWidgets import QApplication
 from qgis.core import *
 from qgis.gui import *
 
 # initialize resources (icons) from resources.py
-from . import resources
 from .qgis_ogrstyle_dialog import QgisOgrStyleDialog
 
 
@@ -67,17 +64,18 @@ class OGRStyleTool(QgsMapTool):
             clicked_feature = self.identify_tool.identify(x, y)
             if clicked_feature:
                 clicked_feature_id = clicked_feature[0].mFeature.id()
-                ds_path = self.iface.activeLayer().dataProvider().dataSourceUri()
-                if '|' in ds_path:
-                    ds_path = ds_path.split('|')
+                ds_path = (
+                    self.iface.activeLayer().dataProvider().dataSourceUri()
+                )
+                if "|" in ds_path:
+                    ds_path = ds_path.split("|")
                     ds_path = ds_path[0]
                 ogr_layer = ogr.Open(ds_path)
                 if ogr_layer:
                     feature = ogr_layer[0].GetFeature(clicked_feature_id)
-                    clipboard.setText(f'{feature.GetStyleString()}')
+                    clipboard.setText(f"{feature.GetStyleString()}")
                     self.dlg.StyleLineEdit.setText(clipboard.text())
             else:
                 self.dlg.StyleLineEdit.setText("")
         self.dlg.StyleLineEdit.setCursorPosition(0)
         self.dlg.show()
-

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ******************************************************************************
 #
 # Copy_Coords
@@ -26,22 +25,17 @@
 import os
 from os import path
 
-from PyQt5.QtWidgets import QApplication
 from qgis.core import QgsApplication
-from qgis.PyQt.QtCore import QTranslator, QCoreApplication
+from qgis.PyQt.QtCore import QCoreApplication, QTranslator
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
-from .ogrstyle_tool import OGRStyleTool
-from . import about_dialog
-
 # initialize resources (icons) from resources.py
-from . import resources
-from .qgis_ogrstyle_dialog import QgisOgrStyleDialog
+from . import about_dialog
+from .ogrstyle_tool import OGRStyleTool
 
 
 class CopyOGRStyle:
-
     def __init__(self, iface):
         """Initialize class"""
         # save reference to QGIS interface
@@ -91,10 +85,9 @@ class CopyOGRStyle:
             QCoreApplication.installTranslator(translator)
             self._translator = translator  # Should be kept in memory
 
-        add_translator(path.join(
-            self.plugin_dir, 'i18n',
-            'copy_ogr_style_{}.qm'.format(locale)
-        ))
+        add_translator(
+            path.join(self.plugin_dir, "i18n", f"copy_ogr_style_{locale}.qm")
+        )
 
     def unload(self):
         """Actions to run when the plugin is unloaded"""

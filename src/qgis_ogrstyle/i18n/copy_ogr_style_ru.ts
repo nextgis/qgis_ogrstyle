@@ -41,7 +41,7 @@
     <message>
         <location filename="../about_dialog.py" line="82"/>
         <source>Fully featured Web GIS service</source>
-        <translation>Полнофункциональный веб-ГИС-сервис</translation>
+        <translation>Полнофункциональный Веб ГИС-сервис</translation>
     </message>
 </context>
 <context>

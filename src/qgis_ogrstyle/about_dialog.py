@@ -35,11 +35,11 @@ class AboutDialog(QDialog, FORM_CLASS):
 
         return locale_full_name[0:2]
 
-    def __metadata(self) -> Dict[str, str]:
+    def __metadata(self) -> Dict[str, Optional[str]]:
         locale = self.__locale()
         is_ru = locale in ["ru", "uk"]
 
-        def metadata_value(key: str) -> str:
+        def metadata_value(key: str) -> Optional[str]:
             value = pluginMetadata(self.__package_name, f"{key}[{locale}]")
             if value == "__error__":
                 value = pluginMetadata(self.__package_name, key)
@@ -48,6 +48,7 @@ class AboutDialog(QDialog, FORM_CLASS):
             return value
 
         about = metadata_value("about")
+        assert about is not None
         about_stop_phrase = "Разработан компанией" if is_ru else "Developed by"
         if about.find(about_stop_phrase) > 0:
             about = about[: about.find(about_stop_phrase)]
@@ -68,7 +69,7 @@ class AboutDialog(QDialog, FORM_CLASS):
             + self.__package_name,
         }
 
-    def __html(self, metadata: Dict[str, str]) -> str:
+    def __html(self, metadata: Dict[str, Optional[str]]) -> str:
         titles = {
             "developers_title": self.tr("Developers"),
             "homepage_title": self.tr("Homepage"),
@@ -101,6 +102,10 @@ class AboutDialog(QDialog, FORM_CLASS):
               <li><b>{webgis_title}</b>: <a href="{main_url}/nextgis-com/plans{utm}">{main_url}/nextgis-com/plans</a></li>
             </ul>
             </p>
-            """  # noqa: E501
+            """
 
-        return (description + services).format_map(titles | metadata)
+        replacements = dict()
+        replacements.update(titles)
+        replacements.update(metadata)
+
+        return (description + services).format_map(replacements)

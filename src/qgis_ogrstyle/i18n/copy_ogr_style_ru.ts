@@ -4,44 +4,44 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../about_dialog.py" line="73"/>
+        <location filename="../about_dialog.py" line="74"/>
         <source>Developers</source>
         <translation>Разработчики</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="74"/>
+        <location filename="../about_dialog.py" line="75"/>
         <source>Homepage</source>
         <translation>Домашняя страница</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="75"/>
+        <location filename="../about_dialog.py" line="76"/>
         <source>Please report bugs at</source>
         <translation>Пожалуйста, сообщайте о багах в</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="76"/>
-        <source>bugtracker</source>
-        <translation>багтрекер</translation>
-    </message>
-    <message>
-        <location filename="../about_dialog.py" line="77"/>
+        <location filename="../about_dialog.py" line="78"/>
         <source>Video with an overview of the plugin</source>
         <translation>Видео с обзором на плагин</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="78"/>
+        <location filename="../about_dialog.py" line="79"/>
         <source>Other helpful services by NextGIS</source>
         <translation>Другие полезные сервисы от NextGIS</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="79"/>
+        <location filename="../about_dialog.py" line="80"/>
         <source>Convenient up-to-date data extracts for any place in the world</source>
         <translation>Удобная выборка актуальных данных из любой точки мира</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="82"/>
+        <location filename="../about_dialog.py" line="83"/>
         <source>Fully featured Web GIS service</source>
         <translation>Полнофункциональный Веб ГИС-сервис</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="77"/>
+        <source>bugracker</source>
+        <translation>багтрекер</translation>
     </message>
 </context>
 <context>
@@ -60,17 +60,17 @@
 <context>
     <name>CopyOGRStyle</name>
     <message>
-        <location filename="../qgis_ogrstyle.py" line="62"/>
+        <location filename="../qgis_ogrstyle.py" line="59"/>
         <source>NextGIS OGRStyle</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qgis_ogrstyle.py" line="63"/>
+        <location filename="../qgis_ogrstyle.py" line="60"/>
         <source>About plugin…</source>
         <translation>О плагине…</translation>
     </message>
     <message>
-        <location filename="../qgis_ogrstyle.py" line="66"/>
+        <location filename="../qgis_ogrstyle.py" line="63"/>
         <source>About NextGIS OGRStyle plugin</source>
         <translation>О плагинe NextGIS OGRStyle</translation>
     </message>

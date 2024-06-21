@@ -49,9 +49,14 @@ class AboutDialog(QDialog, FORM_CLASS):
 
         about = metadata_value("about")
         assert about is not None
-        about_stop_phrase = "Разработан компанией" if is_ru else "Developed by"
-        if about.find(about_stop_phrase) > 0:
-            about = about[: about.find(about_stop_phrase)]
+        for about_stop_phrase in (
+            "Разработан компанией",
+            "Developed by",
+            "Développé par",
+            "Entwickelt von",
+        ):
+            if about.find(about_stop_phrase) > 0:
+                about = about[: about.find(about_stop_phrase)]
 
         url = f"https://nextgis.{'ru' if is_ru else 'com'}"
 
@@ -70,15 +75,20 @@ class AboutDialog(QDialog, FORM_CLASS):
         }
 
     def __html(self, metadata: Dict[str, Optional[str]]) -> str:
+        report_end = self.tr("REPORT_END")
+        if report_end == "REPORT_END":
+            report_end = ""
+
         titles = {
             "developers_title": self.tr("Developers"),
             "homepage_title": self.tr("Homepage"),
             "report_title": self.tr("Please report bugs at"),
-            "bugtracker_title": self.tr("bugracker"),
+            "report_end": report_end,
+            "bugtracker_title": self.tr("bugtracker"),
             "video_title": self.tr("Video with an overview of the plugin"),
             "services_title": self.tr("Other helpful services by NextGIS"),
             "extracts_title": self.tr(
-                "Convenient up-to-date data extracts for any place in the world"  # noqa: E501
+                "Convenient up-to-date data extracts for any place in the world"
             ),
             "webgis_title": self.tr("Fully featured Web GIS service"),
         }
@@ -88,11 +98,11 @@ class AboutDialog(QDialog, FORM_CLASS):
             <p>{about}</p>
             <p><b>{developers_title}:</b> <a href="{main_url}/{utm}">{authors}</a></p>
             <p><b>{homepage_title}:</b> <a href="{homepage_url}">{homepage_url}</a></p>
-            <p><b>{report_title}</b> <a href="{tracker_url}">{bugtracker_title}</a></p>
-            """  # noqa: E501
+            <p><b>{report_title}</b> <a href="{tracker_url}">{bugtracker_title}</a> {report_end}</p>
+            """
 
         if metadata.get("video_url") is not None:
-            description += '<p><b>{video_title}:</b> <a href="{video_url}">{video_url}</a></p>'  # noqa: E501
+            description += '<p><b>{video_title}:</b> <a href="{video_url}">{video_url}</a></p>'
 
         services = """
             <p>

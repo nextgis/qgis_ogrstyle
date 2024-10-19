@@ -29,7 +29,7 @@ from qgis.PyQt import QtWidgets, uic
 # PyQt can populate your plugin
 # with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(
-    os.path.join(os.path.dirname(__file__), "qgis_ogrstyle_dialog_base.ui")  # noqa
+    os.path.join(os.path.dirname(__file__), "ui/qgis_ogrstyle_dialog_base.ui")  # noqa
 )
 
 

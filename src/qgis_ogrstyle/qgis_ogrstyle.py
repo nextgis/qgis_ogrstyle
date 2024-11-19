@@ -55,12 +55,22 @@ class CopyOGRStyle:
         self.action = QAction(
             self.tr("NextGIS OGRStyle"), self.iface.mainWindow()
         )
-        self.action.setIcon(QIcon(":/icons/cursor.png"))
+        self.action.setIcon(QIcon(":/plugins/qgis_ogrstyle/icons/cursor.png"))
         self.action.setWhatsThis(self.tr("NextGIS OGRStyle"))
         self.actionAbout = QAction(
             self.tr("About plugin…"), self.iface.mainWindow()
         )
         self.actionAbout.setWhatsThis(self.tr("About NextGIS OGRStyle plugin"))
+
+        self.__show_help_action = QAction(
+            QIcon(":/plugins/qgis_ogrstyle/icons/cursor.png"),
+            "NextGIS OGRStyle",
+        )
+
+        # add plugin to help menu
+        plugin_help_menu = self.iface.pluginHelpMenu()
+        assert plugin_help_menu is not None
+        plugin_help_menu.addAction(self.__show_help_action)
 
         # add plugin menu to Vector toolbar
         self.iface.addPluginToMenu("NextGIS OGRStyle", self.action)
@@ -72,6 +82,7 @@ class CopyOGRStyle:
         # connect action to the run method
         self.action.triggered.connect(self.run)
         self.actionAbout.triggered.connect(self.about)
+        self.__show_help_action.triggered.connect(self.about)
 
         # prepare map tool
         self.mapTool = OGRStyleTool(self.iface)

@@ -44,7 +44,9 @@ class OGRStyleTool(QgsMapTool):
         # self.emitPoint = QgsMapToolEmitPoint(self.canvas)
         self.iface = iface
 
-        self.cursor = QCursor(QPixmap(":/icons/cursor.png"), 1, 1)
+        self.cursor = QCursor(
+            QPixmap(":/plugins/qgis_ogrstyle/icons/cursor.png"), 1, 1
+        )
 
         self.layer = self.iface.activeLayer()
 
